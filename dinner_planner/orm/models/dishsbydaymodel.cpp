@@ -27,7 +27,7 @@ DishsByDayModel::~DishsByDayModel()
 }
 
 
-QStringList DishsByDayModel::showDishMenuByDay(const QString &day, const QString &lunchTime)
+QStringList DishsByDayModel::showDishMenuByDayAndLunch(const QString &day, const QString &lunchTime)
 {
     QDjangoQuerySet<DishMenuByDay> dishs;
     QStringList tmp;
@@ -44,6 +44,23 @@ QStringList DishsByDayModel::showDishMenuByDay(const QString &day, const QString
     return tmp;
 }
 
+QStringList DishsByDayModel::showDishMenuByDay(const QString &day)
+{
+    QDjangoQuerySet<DishMenuByDay> dishs;
+    QStringList tmp;
+
+    tmp.clear();
+
+    QList<QVariantMap> propertyMaps = dishs.values(QStringList() << "day" << "lunchTime" << "dishName");
+    foreach (const QVariantMap &propertyMap, propertyMaps) {
+        if (day == propertyMap["day"].toString()) {
+            tmp.append(propertyMap["dishName"].toString());
+        }
+    }
+
+    return tmp;
+}
+
 void DishsByDayModel::addDish(const QString &day, const QString &lunchTime, const QString &dishName) {
 
 
@@ -53,7 +70,10 @@ void DishsByDayModel::addDish(const QString &day, const QString &lunchTime, cons
 
     QList<QVariantMap> propertyMaps = dishs.values(QStringList() << "day" << "lunchTime" << "dishName");
     foreach (const QVariantMap &propertyMap, propertyMaps) {
-        if (dishName == propertyMap["dishName"].toString()) {
+
+        if ((day == propertyMap["day"].toString())&&
+            (lunchTime == propertyMap["lunchTime"].toString())&&
+            (dishName == propertyMap["dishName"].toString())){
             isFind = true;
         }
     }
@@ -74,7 +94,7 @@ void DishsByDayModel::addDish(const QString &day, const QString &lunchTime, cons
 
 void DishsByDayModel::updateModel(const QString &day, const QString &lunchTime)
 {
-    setStringList(showDishMenuByDay(day, lunchTime));
+    setStringList(showDishMenuByDayAndLunch(day, lunchTime));
 }
 
 void DishsByDayModel::deleteDish(const QString &day, const QString &lunchTime, const QString &dishName)

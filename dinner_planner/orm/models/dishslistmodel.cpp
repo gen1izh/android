@@ -70,6 +70,23 @@ void DishListModel::updateModel()
     setStringList(showDishsList());
 }
 
+QString DishListModel::showIngridientsByDush(const QString &name)
+{
+    QDjangoQuerySet<DishList> dishs;
+
+    QString description = "";
+
+    QList<QVariantMap> propertyMaps = dishs.values(QStringList() << "name" << "description");
+    foreach (const QVariantMap &propertyMap, propertyMaps) {
+        if( name == propertyMap["name"].toString()) {
+            description = propertyMap["description"].toString();
+            break;
+        }
+    }
+
+    return description;
+}
+
 void DishListModel::deleteDish(const QModelIndex &index)
 {
     QString name = data(index, Qt::DisplayRole).toString();

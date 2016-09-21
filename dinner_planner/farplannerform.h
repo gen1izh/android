@@ -15,6 +15,9 @@ public:
     explicit FarPlannerForm(QWidget *parent = 0);
     ~FarPlannerForm();
 
+private slots:
+  void on_chooseDateButton_clicked();
+
 private:
     Ui::FarPlannerForm *ui;
 };

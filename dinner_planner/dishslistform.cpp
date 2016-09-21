@@ -12,6 +12,7 @@ DishsListForm::DishsListForm(QWidget *parent) :
     GlobalVariables::Instance().setDishListModel(new DishListModel());
 
     ui->dishsListView->setModel(GlobalVariables::Instance().dishListModel());
+
 }
 
 
@@ -26,28 +27,35 @@ void DishsListForm::on_dishsListView_clicked(const QModelIndex &index)
 {
 
     GlobalVariables::Instance().dishsByDayModel()->addDish(ui->dayLabel->text(),
-                                                  ui->trapezaLabel->text(),
-                                                  index.data().toString());
+                                                           ui->trapezaLabel->text(),
+                                                           index.data().toString());
 
 
-    GlobalVariables::Instance().dishsByTimeForm()->setDay(ui->dayLabel->text());
-    GlobalVariables::Instance().dishsByTimeForm()->setTrapeza(ui->trapezaLabel->text());
     GlobalVariables::Instance().dishsByTimeForm()->readModel(ui->dayLabel->text(),
                                                             ui->trapezaLabel->text());
     GlobalVariables::Instance().dishsByTimeForm()->show();
     hide();
 }
 
-void DishsListForm::setDay(const QString &day) {
-    ui->dayLabel->setText(day);
-}
-
-void DishsListForm::setTrapeza(const QString &trapeza) {
-    ui->trapezaLabel->setText(trapeza);
-}
-
 void DishsListForm::on_toMainButton_clicked()
 {
     GlobalVariables::Instance().mainWindow()->show();
+    hide();
+}
+
+
+void DishsListForm::showEvent(QShowEvent *event)
+{
+    ui->dayLabel->setText(GlobalVariables::Instance().currentDay());
+    ui->trapezaLabel->setText(GlobalVariables::Instance().currentTrapeza());
+}
+
+
+void DishsListForm::setCurrentDay(const QString &day) {
+  ui->dayLabel->setText(day);
+}
+
+void DishsListForm::on_backButton_clicked()
+{
     hide();
 }

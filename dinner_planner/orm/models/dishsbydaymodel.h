@@ -12,13 +12,14 @@ public:
   DishsByDayModel();
   ~DishsByDayModel();
 
-  QStringList showDishMenuByDay(const QString &day, const QString &lunchTime);
+  QStringList showDishMenuByDayAndLunch(const QString &day, const QString &lunchTime);
 
   void addDish(const QString &day, const QString &lunchTime, const QString &dishName);
   void deleteDish(const QString &day, const QString &lunchTime, const QString &dishName);
 
   void updateModel(const QString &day, const QString &lunchTime);
 
+  QStringList showDishMenuByDay(const QString &day);
 };
 
 #endif // DISH_BY_DAY_MODEL_H

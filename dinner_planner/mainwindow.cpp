@@ -2,6 +2,11 @@
 #include "ui_mainwindow.h"
 #include "models.h"
 
+#include <QGeoAreaMonitorSource>
+#include <QGeoCircle>
+#include <QMessageBox>
+#include <QSettings>
+
 bool MainWindow::splashPlay() const
 {
     return m_splashPlay;
@@ -105,12 +110,51 @@ MainWindow::MainWindow(QWidget *parent) :
         QDateTime newDate(QDate(now.date().year(), now.date().month(), now.date().day()+days), QTime(0, 0));
         ui->sunLabel->setText(newDate.toString("dd.MM.yyyy"));
     }
+
+    bool ok;
+    QSettings settings("Home", "DinnerPlanner");
+    settings.beginGroup("gps_coordinates");
+    double lat   = settings.value("latitude", -1).toDouble(&ok);
+    double longi = settings.value("longitude", -1).toDouble(&ok);
+    settings.endGroup();
+
+    if ((lat =-1) && (longi == -1)) {
+        ui->setXyTab->setEnabled(true);
+        ui->resetXyTab->setEnabled(false);
+    }
+    else {
+        ui->setXyTab->setEnabled(false);
+        ui->resetXyTab->setEnabled(true);
+    }
+
+    QGeoAreaMonitorSource *monitor = QGeoAreaMonitorSource::createDefaultSource(this);
+    if (monitor) {
+        connect(monitor, SIGNAL(areaEntered(QGeoAreaMonitorInfo,QGeoPositionInfo)),
+                this, SLOT(areaEntered(QGeoAreaMonitorInfo,QGeoPositionInfo)));
+        connect(monitor, SIGNAL(areaExited(QGeoAreaMonitorInfo,QGeoPositionInfo)),
+                this, SLOT(areaExited(QGeoAreaMonitorInfo,QGeoPositionInfo)));
+
+        QGeoAreaMonitorInfo homePlace("Home");
+        QGeoCoordinate position(lat, longi);
+        homePlace.setArea(QGeoCircle(position, 100));
+
+        monitor->startMonitoring(homePlace);
+
+    } else {
+        QMessageBox msgBox;
+        msgBox.setText("Could not create default area monitor");
+        msgBox.exec();
+    }
+
 }
 
 
 void MainWindow::positionUpdated(const QGeoPositionInfo &info) {
     ui->shitotaLabel->setText(QString("Широта: %1").arg(info.coordinate().latitude()));
     ui->dolgotaLabel->setText(QString("Долгота: %1").arg(info.coordinate().longitude()));
+
+    latitude = info.coordinate().latitude();
+    longitude = info.coordinate().longitude();
 }
 
 MainWindow::~MainWindow()
@@ -125,42 +169,129 @@ void MainWindow::on_createNewFoodMenuButton_clicked()
 
 void MainWindow::on_monButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->monLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->monLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_tueButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->tueLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->tueLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_wedButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->wedLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->wedLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_thuButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->thuLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->thuLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_friButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->friLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->friLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_satButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->satLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->satLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
 }
 
 void MainWindow::on_sunButton_clicked()
 {
-    GlobalVariables::Instance().lunchTimesList()->setDay(ui->sunLabel->text());
+    GlobalVariables::Instance().setCurrentDay(ui->sunLabel->text());
     GlobalVariables::Instance().lunchTimesList()->show();
+}
+
+void MainWindow::on_setCoordinateButton_clicked()
+{
+    QSettings settings("Home", "DinnerPlanner");
+    settings.beginGroup("gps_coordinates");
+    settings.setValue("latitude", latitude);
+    settings.setValue("longitude", longitude);
+    settings.endGroup();
+
+    ui->setXyTab->setEnabled(false);
+    ui->resetXyTab->setEnabled(true);
+}
+
+void MainWindow::on_resetCoordinateButton_clicked()
+{
+    QSettings settings("Home", "DinnerPlanner");
+    settings.beginGroup("gps_coordinates");
+    settings.setValue("latitude", -1);
+    settings.setValue("longitude", -1);
+    settings.endGroup();
+
+    ui->setXyTab->setEnabled(true);
+    ui->resetXyTab->setEnabled(false);
+}
+
+void MainWindow::areaEntered(const QGeoAreaMonitorInfo &mon, const QGeoPositionInfo &update)
+{
+  Q_UNUSED(mon)
+    ui->statusPositionLabel->setText(QString("Now within 100 meters, current position is %1")
+                                     .arg(update.coordinate().toString(QGeoCoordinate::Degrees)));
+
+}
+
+void MainWindow::areaExited(const QGeoAreaMonitorInfo &mon, const QGeoPositionInfo &update)
+{
+  Q_UNUSED(mon)
+
+    ui->statusPositionLabel->setText(QString("No longer within 100 meters, current position is %1")
+                                     .arg(update.coordinate().toString(QGeoCoordinate::Degrees)));
+}
+
+void MainWindow::on_monBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->monLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_tueBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->tueLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_wedBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->wedLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_thuBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->thuLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_friBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->friLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_satBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->satLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_sunBasketButton_clicked()
+{
+    GlobalVariables::Instance().setCurrentDay(ui->sunLabel->text());
+    GlobalVariables::Instance().basketForm()->show();
+}
+
+void MainWindow::on_versionLabel_linkHovered(const QString &link)
+{
+    GlobalVariables::Instance().versionInfoForm()->show();
 }

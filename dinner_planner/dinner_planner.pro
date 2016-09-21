@@ -28,7 +28,9 @@ SOURCES += main.cpp\
     newdishform.cpp \
     models.cpp \
     dishsbytimeform.cpp \
-    farplannerform.cpp
+    farplannerform.cpp \
+    basketform.cpp \
+    versioninfoform.cpp
 
 HEADERS  += mainwindow.h \
     orm/db/QDjango.h \
@@ -48,14 +50,18 @@ HEADERS  += mainwindow.h \
     newdishform.h \
     models.h \
     dishsbytimeform.h \
-    farplannerform.h
+    farplannerform.h \
+    basketform.h \
+    versioninfoform.h
 
 FORMS    += mainwindow.ui \
     dishslistform.ui \
     lunchtimeslist.ui \
     newdishform.ui \
     dishsbytimeform.ui \
-    farplannerform.ui
+    farplannerform.ui \
+    basketform.ui \
+    versioninfoform.ui
 
 CONFIG += mobility
 

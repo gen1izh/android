@@ -19,6 +19,8 @@ public:
 
   void updateModel();
 
+  QString showIngridientsByDush(const QString &name);
+
 };
 
 #endif // DISHS_LIST_MODEL_H

@@ -29,9 +29,30 @@ text-align:left
 }
  </string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QCalendarWidget" name="calendarWidget"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="chooseDateButton">
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+color: #333;
+border: 2px solid #888888;
+font: 30pt &quot;Arial&quot;;
+border-radius: 6px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
+min-width: 80px;
+text-align:left
+}</string>
+     </property>
+     <property name="text">
+      <string>Выбрать дату</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

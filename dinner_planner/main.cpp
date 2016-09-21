@@ -3,6 +3,7 @@
 #include <QSplashScreen>
 #include <QTimer>
 #include <QThread>
+#include <QScreen>
 #include "models.h"
 
 
@@ -12,6 +13,8 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     GlobalVariables::Instance();
+
+    QApplication::primaryScreen()->setOrientationUpdateMask(Qt::PortraitOrientation);
 
     w.setSplashPlay(true);
 
@@ -27,6 +30,11 @@ int main(int argc, char *argv[])
 
     _splash->finish(&w);
     delete _splash;
+
+
+//    QCoreApplication::setOrganizationName("DinnerPlanner");
+//    QCoreApplication::setOrganizationDomain("home");
+//    QCoreApplication::setApplicationName("DinnerPlanner");
 
     w.show();
 

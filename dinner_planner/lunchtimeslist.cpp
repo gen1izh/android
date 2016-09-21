@@ -14,20 +14,16 @@ LunchTimesList::~LunchTimesList()
     delete ui;
 }
 
-void LunchTimesList::setDay(const QString &day)
-{
-    ui->dayEdit->setText(day);
-}
 
 
 void LunchTimesList::on_lunchTimesListWidget_clicked(const QModelIndex &index)
 {
-    GlobalVariables::Instance().dishsByTimeForm()->setDay(ui->dayEdit->text());
-    GlobalVariables::Instance().dishsByTimeForm()->setTrapeza(ui->lunchTimesListWidget->currentItem()->text());
+
+    GlobalVariables::Instance().setCurrentTrapeza(ui->lunchTimesListWidget->currentItem()->text());
+
     GlobalVariables::Instance().dishsByTimeForm()->readModel(ui->dayEdit->text(),
                                                                       ui->lunchTimesListWidget->currentItem()->text());
     GlobalVariables::Instance().dishsByTimeForm()->show();
-    hide();
 }
 
 void LunchTimesList::on_toMainButton_clicked()
@@ -38,5 +34,15 @@ void LunchTimesList::on_toMainButton_clicked()
 
 void LunchTimesList::on_calendarButton_clicked()
 {
-    GlobalVariables::Instance().farPlannerForm()->show();
+  GlobalVariables::Instance().farPlannerForm()->show();
+}
+
+void LunchTimesList::showEvent(QShowEvent *event)
+{
+    ui->dayEdit->setText(GlobalVariables::Instance().currentDay());
+}
+
+
+void LunchTimesList::setCurrentDay(const QString &day) {
+  ui->dayEdit->setText(day);
 }

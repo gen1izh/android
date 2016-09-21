@@ -121,7 +121,7 @@ text-align:left
 </string>
      </property>
      <property name="text">
-      <string>Описание</string>
+      <string>Ингридиенты</string>
      </property>
     </widget>
    </item>

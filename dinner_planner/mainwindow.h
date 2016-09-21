@@ -5,6 +5,8 @@
 
 #include <QGeoPositionInfoSource>
 #include <QDateTime>
+#include <QDebug>
+#include <QGeoAreaMonitorInfo>
 
 namespace Ui {
 class MainWindow;
@@ -40,8 +42,40 @@ private slots:
     void on_satButton_clicked();
     void on_sunButton_clicked();
 
+    void on_setCoordinateButton_clicked();
+
+    void on_resetCoordinateButton_clicked();
+
+    void areaEntered(const QGeoAreaMonitorInfo &mon, const QGeoPositionInfo &update);
+
+    void areaExited(const QGeoAreaMonitorInfo &mon, const QGeoPositionInfo &update);
+
+    void on_monBasketButton_clicked();
+
+    void on_tueBasketButton_clicked();
+
+    void on_wedBasketButton_clicked();
+
+    void on_thuBasketButton_clicked();
+
+    void on_friBasketButton_clicked();
+
+    void on_satBasketButton_clicked();
+
+    void on_sunBasketButton_clicked();
+
+    void on_versionLabel_linkHovered(const QString &link);
+
 private:
     Ui::MainWindow *ui;
+
+    double latitude=0;
+    double longitude=0;
 };
+
+
+
+
+
 
 #endif // MAINWINDOW_H

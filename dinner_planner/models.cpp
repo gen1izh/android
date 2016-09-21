@@ -27,6 +27,16 @@ void GlobalVariables::InitializeForms()
     m_dishsListForm.reset(new DishsListForm());
     m_dishsByTimeForm.reset(new DishsByTimeForm());
     m_farPlannerForm.reset(new FarPlannerForm());
+
+    m_basketForm.reset(new BasketForm());
+    m_versionInfoForm.reset(new VersionInfoForm());
+}
+
+void GlobalVariables::resetCurrentDayOnLabels()
+{
+  lunchTimesList()->setCurrentDay(m_currentDay);
+  dishsListForm()->setCurrentDay(m_currentDay);
+  dishsByTimeForm()->setCurrentDay(m_currentDay);
 }
 
 void GlobalVariables::setMainWindowPointer(MainWindow *ptr)
@@ -67,6 +77,37 @@ FarPlannerForm *GlobalVariables::farPlannerForm() const
 {
     return m_farPlannerForm.data();
 }
+QString GlobalVariables::currentDay() const
+{
+    return m_currentDay;
+}
+
+void GlobalVariables::setCurrentDay(const QString &currentDay)
+{
+    m_currentDay = currentDay;
+}
+QString GlobalVariables::currentTrapeza() const
+{
+    return m_currentTrapeza;
+}
+
+void GlobalVariables::setCurrentTrapeza(const QString &currentTrapeza)
+{
+    m_currentTrapeza = currentTrapeza;
+}
+
+BasketForm *GlobalVariables::basketForm() const
+{
+    return m_basketForm.data();
+}
+VersionInfoForm *GlobalVariables::versionInfoForm() const
+{
+    return m_versionInfoForm.data();
+}
+
+
+
+
 
 
 

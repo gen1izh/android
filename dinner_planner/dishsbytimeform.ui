@@ -301,14 +301,14 @@ text-align:left
  </string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QLabel" name="label_3">
+   <item row="8" column="0" colspan="2">
+    <widget class="QPushButton" name="toMainButton">
      <property name="styleSheet">
       <string notr="true"> 
- QLabel {
+ QPushButton {
 color: #333;
-border: 0px solid #888888;
-font: 14pt &quot;Arial&quot;;
+border: 2px solid #888888;
+font: 30pt &quot;Arial&quot;;
 border-radius: 6px;
 padding: 5px;
 background: qradialgradient(cx: 0.3, cy: -0.4,
@@ -316,15 +316,46 @@ fx: 0.3, fy: -0.4,
 radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
 min-width: 80px;
 text-align:left
+}
+ 
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #bbb);
+}
+ 
+ QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.3, stop: 0 #fff, stop: 1 #ddd);
 }</string>
      </property>
      <property name="text">
-      <string>Название трапезы:</string>
+      <string>Домой</string>
+     </property>
+     <property name="icon">
+      <iconset resource="images_resources.qrc">
+       <normaloff>:/images/img/kfm_home_6893.png</normaloff>:/images/img/kfm_home_6893.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>48</width>
+       <height>48</height>
+      </size>
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_2">
+   <item row="2" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true"> 
  QLabel {
@@ -341,34 +372,12 @@ text-align:left
 }</string>
      </property>
      <property name="text">
-      <string>День:</string>
+      <string>Перечень блюд:</string>
      </property>
     </widget>
    </item>
    <item row="0" column="1">
     <widget class="QLabel" name="dayLabel">
-     <property name="styleSheet">
-      <string notr="true"> 
- QLabel {
-color: #333;
-border: 0px solid #888888;
-font: 14pt &quot;Arial&quot;;
-border-radius: 6px;
-padding: 5px;
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
-min-width: 80px;
-text-align:left
-}</string>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLabel" name="trapezaLabel">
      <property name="styleSheet">
       <string notr="true"> 
  QLabel {
@@ -442,23 +451,14 @@ radius: 1.3, stop: 0 #fff, stop: 1 #ddd);
      </property>
     </widget>
    </item>
-   <item row="6" column="0" colspan="2">
-    <widget class="QPushButton" name="deleteButton">
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>30</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
+   <item row="1" column="1">
+    <widget class="QLabel" name="trapezaLabel">
      <property name="styleSheet">
       <string notr="true"> 
- QPushButton {
+ QLabel {
 color: #333;
-border: 2px solid #888888;
-font: 30pt &quot;Arial&quot;;
+border: 0px solid #888888;
+font: 14pt &quot;Arial&quot;;
 border-radius: 6px;
 padding: 5px;
 background: qradialgradient(cx: 0.3, cy: -0.4,
@@ -466,32 +466,10 @@ fx: 0.3, fy: -0.4,
 radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
 min-width: 80px;
 text-align:left
-}
- 
-QPushButton:hover {
-background: qradialgradient(cx: 0.3, cy: -0.4,
-fx: 0.3, fy: -0.4,
-radius: 1.3, stop: 0 #fff, stop: 1 #bbb);
-}
- 
- QPushButton:pressed {
-background: qradialgradient(cx: 0.4, cy: -0.1,
-fx: 0.4, fy: -0.1,
-radius: 1.3, stop: 0 #fff, stop: 1 #ddd);
 }</string>
      </property>
      <property name="text">
-      <string>Удалить</string>
-     </property>
-     <property name="icon">
-      <iconset resource="images_resources.qrc">
-       <normaloff>:/images/img/delete_9019.png</normaloff>:/images/img/delete_9019.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>48</width>
-       <height>48</height>
-      </size>
+      <string/>
      </property>
     </widget>
    </item>
@@ -788,17 +766,8 @@ text-align:left
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>14</pointsize>
-       <weight>50</weight>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_3">
      <property name="styleSheet">
       <string notr="true"> 
  QLabel {
@@ -815,12 +784,43 @@ text-align:left
 }</string>
      </property>
      <property name="text">
-      <string>Перечень блюд:</string>
+      <string>Название трапезы:</string>
      </property>
     </widget>
    </item>
-   <item row="7" column="0" colspan="2">
-    <widget class="QPushButton" name="toMainButton">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="styleSheet">
+      <string notr="true"> 
+ QLabel {
+color: #333;
+border: 0px solid #888888;
+font: 14pt &quot;Arial&quot;;
+border-radius: 6px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
+min-width: 80px;
+text-align:left
+}</string>
+     </property>
+     <property name="text">
+      <string>День:</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="QPushButton" name="deleteButton">
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>30</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true"> 
  QPushButton {
@@ -849,17 +849,51 @@ radius: 1.3, stop: 0 #fff, stop: 1 #ddd);
 }</string>
      </property>
      <property name="text">
-      <string>Домой</string>
+      <string>Удалить</string>
      </property>
      <property name="icon">
       <iconset resource="images_resources.qrc">
-       <normaloff>:/images/img/kfm_home_6893.png</normaloff>:/images/img/kfm_home_6893.png</iconset>
+       <normaloff>:/images/img/delete_9019.png</normaloff>:/images/img/delete_9019.png</iconset>
      </property>
      <property name="iconSize">
       <size>
        <width>48</width>
        <height>48</height>
       </size>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="QPushButton" name="backButton">
+     <property name="styleSheet">
+      <string notr="true"> 
+ QPushButton {
+color: #333;
+border: 2px solid #888888;
+font: 30pt &quot;Arial&quot;;
+border-radius: 6px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
+min-width: 80px;
+text-align:left
+}
+ 
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #bbb);
+}
+ 
+ QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.3, stop: 0 #fff, stop: 1 #ddd);
+}</string>
+     </property>
+     <property name="text">
+      <string>Назад</string>
      </property>
     </widget>
    </item>

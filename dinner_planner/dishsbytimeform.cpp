@@ -30,21 +30,9 @@ void DishsByTimeForm::readModel(const QString &day, const QString &lunchTime)
 
 void DishsByTimeForm::on_addButton_clicked()
 {
-    GlobalVariables::Instance().dishsListForm()->setDay(ui->dayLabel->text());
-    GlobalVariables::Instance().dishsListForm()->setTrapeza(ui->trapezaLabel->text());
     GlobalVariables::Instance().dishListModel()->updateModel();
     GlobalVariables::Instance().dishsListForm()->show();
-    hide();
 }
-
-void DishsByTimeForm::setDay(const QString &day) {
-    ui->dayLabel->setText(day);
-}
-
-void DishsByTimeForm::setTrapeza(const QString &trapeza) {
-    ui->trapezaLabel->setText(trapeza);
-}
-
 
 void DishsByTimeForm::on_deleteButton_clicked()
 {
@@ -57,4 +45,21 @@ void DishsByTimeForm::on_toMainButton_clicked()
 {
     GlobalVariables::Instance().mainWindow()->show();
     hide();
+}
+
+void DishsByTimeForm::showEvent(QShowEvent *event)
+{
+    ui->dayLabel->setText(GlobalVariables::Instance().currentDay());
+    ui->trapezaLabel->setText(GlobalVariables::Instance().currentTrapeza());
+}
+
+void DishsByTimeForm::on_backButton_clicked()
+{
+    // Кнопка назад
+    hide();
+}
+
+
+void DishsByTimeForm::setCurrentDay(const QString &day) {
+  ui->dayLabel->setText(day);
 }

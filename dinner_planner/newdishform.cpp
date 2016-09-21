@@ -34,3 +34,5 @@ void NewDishForm::on_toMainButton_clicked()
     GlobalVariables::Instance().mainWindow()->show();
     hide();
 }
+
+

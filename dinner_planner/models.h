@@ -10,6 +10,9 @@
 #include "dishsbytimeform.h"
 #include "farplannerform.h"
 
+#include "basketform.h"
+#include "versioninfoform.h"
+
 #include "mainwindow.h"
 
 class GlobalVariables
@@ -29,6 +32,8 @@ public:
 
     void InitializeForms();
 
+    void resetCurrentDayOnLabels();
+
     void setMainWindowPointer(MainWindow *ptr);
 
     LunchTimesList *lunchTimesList() const;
@@ -38,6 +43,16 @@ public:
     MainWindow *mainWindow() const;
 
     FarPlannerForm *farPlannerForm() const;
+
+    QString currentDay() const;
+    void setCurrentDay(const QString &currentDay);
+
+    QString currentTrapeza() const;
+    void setCurrentTrapeza(const QString &currentTrapeza);
+
+    BasketForm *basketForm() const;
+
+    VersionInfoForm *versionInfoForm() const;
 
 private:
     GlobalVariables(){}
@@ -83,7 +98,28 @@ private:
     /*!
      * \brief
      */
+    QScopedPointer<BasketForm> m_basketForm;
+
+    /*!
+     * \brief
+     */
+    QScopedPointer<VersionInfoForm> m_versionInfoForm;
+
+
+    /*!
+     * \brief
+     */
     MainWindow      *m_mainWindow;
+
+    /*!
+     * \brief m_currentDay
+     */
+    QString m_currentDay = "";
+
+    /*!
+     * \brief m_currentTrapeza
+     */
+    QString m_currentTrapeza = "";
 
 };
 

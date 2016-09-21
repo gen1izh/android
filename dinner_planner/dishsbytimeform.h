@@ -1,6 +1,7 @@
 #ifndef DISHS_BY_TIME_FORM_H
 #define DISHS_BY_TIME_FORM_H
 
+#include <QShowEvent>
 #include <QWidget>
 
 namespace Ui {
@@ -15,9 +16,8 @@ public:
     explicit DishsByTimeForm(QWidget *parent = 0);
     ~DishsByTimeForm();
 
-    void setTrapeza(const QString &trapeza);
-    void setDay(const QString &day);
-    void readModel(const QString &day, const QString &lunchTime);
+  void readModel(const QString &day, const QString &lunchTime);
+  void setCurrentDay(const QString &day);
 private slots:
 
 
@@ -27,8 +27,13 @@ private slots:
 
     void on_toMainButton_clicked();
 
+    void on_backButton_clicked();
+
 private:
     Ui::DishsByTimeForm *ui;
+
+protected:
+    void showEvent(QShowEvent *event);
 };
 
 #endif // DISHS_BY_TIME_FORM_H
