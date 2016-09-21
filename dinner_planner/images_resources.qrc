@@ -1,0 +1,19 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>img/friday_4441.ico</file>
+        <file>img/monday_9505.ico</file>
+        <file>img/satursday_5939.ico</file>
+        <file>img/sunday_6912.ico</file>
+        <file>img/thursday_4155.ico</file>
+        <file>img/tuesday_8055.ico</file>
+        <file>img/wednesday_2736.ico</file>
+        <file>img/splash.png</file>
+        <file>img/buy_64_6037.png</file>
+        <file>img/mail_new_6428.png</file>
+        <file>img/filesaveas_1316.png</file>
+        <file>img/kfm_home_6893.png</file>
+        <file>img/edit_add_8006.png</file>
+        <file>img/delete_9019.png</file>
+        <file>img/calendar_2991.png</file>
+    </qresource>
+</RCC>
