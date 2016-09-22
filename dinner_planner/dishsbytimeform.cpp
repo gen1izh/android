@@ -39,6 +39,10 @@ void DishsByTimeForm::on_deleteButton_clicked()
     GlobalVariables::Instance().dishsByDayModel()->deleteDish(ui->dayLabel->text(),
                                                      ui->trapezaLabel->text(),
                                                      ui->dishsByDayListView->currentIndex().data().toString());
+
+    GlobalVariables::Instance().dishsByDayModel()->updateModel(ui->dayLabel->text(), ui->trapezaLabel->text());
+
+
 }
 
 void DishsByTimeForm::on_toMainButton_clicked()

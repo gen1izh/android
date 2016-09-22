@@ -36,10 +36,25 @@ min-width: 80px;
    </item>
    <item>
     <widget class="QPlainTextEdit" name="versionEdit">
+     <property name="styleSheet">
+      <string notr="true">QPlainTextEdit{
+color: #333;
+border: 1px solid #888888;
+font: 12pt &quot;Arial&quot;;
+border-radius: 6px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
+min-width: 80px;
+}</string>
+     </property>
      <property name="plainText">
       <string>----version 1----
-Первый релиз ПО, согласно требованиям заказчика
-</string>
+Первый релиз ПО, согласно требованиям заказчика.
+
+Разработчик: gen
+Дизайнер: daria</string>
      </property>
     </widget>
    </item>
@@ -51,7 +66,21 @@ min-width: 80px;
     </widget>
    </item>
    <item>
-    <widget class="QTextEdit" name="informationEdit"/>
+    <widget class="QTextEdit" name="informationEdit">
+     <property name="styleSheet">
+      <string notr="true">QTextEdit{
+color: #333;
+border: 1px solid #888888;
+font: 14pt &quot;Arial&quot;;
+border-radius: 6px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.3, stop: 0 #fff, stop: 1 #cdffff);
+min-width: 80px;
+}</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QPushButton" name="toMainButton">

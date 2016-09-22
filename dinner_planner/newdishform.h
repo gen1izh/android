@@ -15,6 +15,8 @@ public:
     explicit NewDishForm(QWidget *parent = 0);
     ~NewDishForm();
 
+    void clearEdits();
+
 private slots:
     void on_saveButton_clicked();
 
