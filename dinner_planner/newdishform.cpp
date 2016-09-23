@@ -17,6 +17,12 @@ NewDishForm::~NewDishForm()
     delete ui;
 }
 
+void NewDishForm::clearEdits()
+{
+    ui->descriptionTextEdit->setText("");
+    ui->nameLineEdit->setText("");
+}
+
 void NewDishForm::on_saveButton_clicked()
 {
     GlobalVariables::Instance().dishListModel()->createNewDish(

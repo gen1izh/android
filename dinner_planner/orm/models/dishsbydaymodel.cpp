@@ -7,6 +7,7 @@
 #include "dishsbydaymodel.h"
 
 #include <QMessageBox>
+#include <QDebug>
 
 
 DishsByDayModel::DishsByDayModel()
@@ -100,6 +101,17 @@ void DishsByDayModel::updateModel(const QString &day, const QString &lunchTime)
 void DishsByDayModel::deleteDish(const QString &day, const QString &lunchTime, const QString &dishName)
 {
     QDjangoQuerySet<DishMenuByDay> dishs;
-    dishs = dishs.filter(QDjangoWhere("dishName", QDjangoWhere::Equals, dishName));
-    dishs.remove();
+
+
+    // iterate over matching users
+    DishMenuByDay dish;
+    for (int i = 0; i < dishs.size(); ++i) {
+      if (dishs.at(i, &dish)) {
+        qDebug() << "day = " << dish.day() << " lunchTime = " << dish.lunchTime() << "dishName = " <<  dish.dishName();
+        if ((dish.day() == day) && (dish.lunchTime() == lunchTime) && (dish.dishName() == dishName) ) {
+            dish.remove();
+        }
+      }
+    }
+
 }

@@ -2,10 +2,7 @@
 #include "ui_mainwindow.h"
 #include "models.h"
 
-#include <QGeoAreaMonitorSource>
-#include <QGeoCircle>
-#include <QMessageBox>
-#include <QSettings>
+
 
 bool MainWindow::splashPlay() const
 {
@@ -119,14 +116,13 @@ MainWindow::MainWindow(QWidget *parent) :
     settings.endGroup();
 
     if ((lat =-1) && (longi == -1)) {
-        ui->setXyTab->setEnabled(true);
-        ui->resetXyTab->setEnabled(false);
+        ui->setXyTab->setVisible(true);
+        ui->resetXyTab->setVisible(false);
     }
     else {
-        ui->setXyTab->setEnabled(false);
-        ui->resetXyTab->setEnabled(true);
+        ui->setXyTab->setVisible(false);
+        ui->resetXyTab->setVisible(true);
     }
-
     QGeoAreaMonitorSource *monitor = QGeoAreaMonitorSource::createDefaultSource(this);
     if (monitor) {
         connect(monitor, SIGNAL(areaEntered(QGeoAreaMonitorInfo,QGeoPositionInfo)),
@@ -146,6 +142,7 @@ MainWindow::MainWindow(QWidget *parent) :
         msgBox.exec();
     }
 
+    ui->statusPositionLabel->setText("Видимо проблемы с Gps... Ниче не вижу.");
 }
 
 
@@ -164,6 +161,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_createNewFoodMenuButton_clicked()
 {
+    GlobalVariables::Instance().newDishForm()->clearEdits();
     GlobalVariables::Instance().newDishForm()->show();
 }
 
@@ -217,8 +215,9 @@ void MainWindow::on_setCoordinateButton_clicked()
     settings.setValue("longitude", longitude);
     settings.endGroup();
 
-    ui->setXyTab->setEnabled(false);
-    ui->resetXyTab->setEnabled(true);
+    ui->setXyTab->setVisible(false);
+    ui->resetXyTab->setVisible(true);
+
 }
 
 void MainWindow::on_resetCoordinateButton_clicked()
@@ -229,14 +228,14 @@ void MainWindow::on_resetCoordinateButton_clicked()
     settings.setValue("longitude", -1);
     settings.endGroup();
 
-    ui->setXyTab->setEnabled(true);
-    ui->resetXyTab->setEnabled(false);
+    ui->setXyTab->setVisible(true);
+    ui->resetXyTab->setVisible(false);
 }
 
 void MainWindow::areaEntered(const QGeoAreaMonitorInfo &mon, const QGeoPositionInfo &update)
 {
   Q_UNUSED(mon)
-    ui->statusPositionLabel->setText(QString("Now within 100 meters, current position is %1")
+    ui->statusPositionLabel->setText(QString("В доме, позиция: %1")
                                      .arg(update.coordinate().toString(QGeoCoordinate::Degrees)));
 
 }
@@ -245,7 +244,7 @@ void MainWindow::areaExited(const QGeoAreaMonitorInfo &mon, const QGeoPositionIn
 {
   Q_UNUSED(mon)
 
-    ui->statusPositionLabel->setText(QString("No longer within 100 meters, current position is %1")
+    ui->statusPositionLabel->setText(QString("Вне дома, позиция: %1")
                                      .arg(update.coordinate().toString(QGeoCoordinate::Degrees)));
 }
 
@@ -291,7 +290,7 @@ void MainWindow::on_sunBasketButton_clicked()
     GlobalVariables::Instance().basketForm()->show();
 }
 
-void MainWindow::on_versionLabel_linkHovered(const QString &link)
+void MainWindow::on_versionButton_clicked()
 {
     GlobalVariables::Instance().versionInfoForm()->show();
 }
