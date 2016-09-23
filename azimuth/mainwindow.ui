@@ -37,7 +37,7 @@ min-width: 80px;
        </font>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="inforamtionPage">
        <property name="geometry">
@@ -53,10 +53,30 @@ min-width: 80px;
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QLCDNumber" name="lcdNumber">
-          <property name="intValue" stdset="0">
-           <number>0</number>
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>1</number>
           </property>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Расстояние</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QLCDNumber" name="lcdNumber"/>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>Угол</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLCDNumber" name="angleNumber"/>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>

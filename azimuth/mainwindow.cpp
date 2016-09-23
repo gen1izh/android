@@ -43,6 +43,8 @@ void MainWindow::updateDistanceInfo()
     current.setLongitude(m_model->getLongitudeByPointName(ui->pointsBox->currentText()));
 
     ui->lcdNumber->display(current.distanceTo(m_info.coordinate()));
+
+    ui->angleNumber->display(current.azimuthTo(m_info.coordinate()));
 }
 
 void MainWindow::on_setPointButton_clicked()
@@ -74,6 +76,7 @@ void MainWindow::on_startButton_clicked()
   else {
     ui->startButton->setText("Начать");
     ui->lcdNumber->display(-1);
+    ui->angleNumber->display(-1);
     m_tick.stop();
      ui->pointsBox->setEnabled(true);
      ui->setPointButton->setEnabled(true);
