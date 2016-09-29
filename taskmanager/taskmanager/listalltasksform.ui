@@ -98,9 +98,6 @@ radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QListWidget" name="tasksList"/>
-   </item>
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="sizePolicy">
@@ -211,6 +208,9 @@ radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
       </item>
      </layout>
     </widget>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QListWidget" name="tasksList"/>
    </item>
   </layout>
  </widget>

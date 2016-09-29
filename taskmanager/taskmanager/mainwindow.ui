@@ -188,7 +188,7 @@ radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
      <x>0</x>
      <y>0</y>
      <width>595</width>
-     <height>64</height>
+     <height>62</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -214,37 +214,44 @@ radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
      <iconset resource="res.qrc">
       <normaloff>:/img/img/icon/configuration_7259.png</normaloff>:/img/img/icon/configuration_7259.png</iconset>
     </property>
-    <addaction name="action_4"/>
+    <addaction name="postAction"/>
     <addaction name="separator"/>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
+    <addaction name="addTaskAction"/>
+    <addaction name="tasksListAction"/>
+    <addaction name="purposeAction"/>
     <addaction name="separator"/>
-    <addaction name="action_7"/>
+    <addaction name="settingsAction"/>
    </widget>
    <addaction name="menu"/>
   </widget>
-  <action name="action">
+  <action name="addTaskAction">
    <property name="text">
     <string>Добавить задачу</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="tasksListAction">
    <property name="text">
     <string>Список задач</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="purposeAction">
    <property name="text">
     <string>Цель на месяц</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="postAction">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/img/img/icon/configuration_7259.png</normaloff>:/img/img/icon/configuration_7259.png</iconset>
+   </property>
    <property name="text">
     <string>Написать рабочую метку</string>
    </property>
+   <property name="iconVisibleInMenu">
+    <bool>true</bool>
+   </property>
   </action>
-  <action name="action_7">
+  <action name="settingsAction">
    <property name="text">
     <string>Настройки</string>
    </property>
