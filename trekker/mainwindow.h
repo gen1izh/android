@@ -21,6 +21,10 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+
+    void createHtml();
+    void createJs();
+
 private slots:
     void on_zoomBox_currentTextChanged(const QString &arg1);
 

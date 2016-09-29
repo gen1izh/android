@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql webkitwidgets positioning
+QT       += core gui sql webview positioning
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

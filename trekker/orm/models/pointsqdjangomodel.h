@@ -10,7 +10,7 @@ class PositionPoints : public QDjangoModel
     Q_PROPERTY(double longtitude READ longtitude WRITE setLongtitude)
     Q_PROPERTY(double latitude READ latitude WRITE setLatitude)
 
-    Q_CLASSINFO("trekName", "0")
+    Q_CLASSINFO("trekName", "")
     Q_CLASSINFO("longtitude", "max_length=50")
     Q_CLASSINFO("latitude", "max_length=50")
 
