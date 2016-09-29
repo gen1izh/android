@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/icon/add_3422.png</file>
+        <file>img/icon/bin-empty_8729.png</file>
+        <file>img/icon/calendar_5231.png</file>
+        <file>img/icon/configuration_7259.png</file>
+        <file>img/icon/disc-floopy_1618.png</file>
+        <file>img/icon/download_6689.png</file>
+        <file>img/icon/error_5813.png</file>
+        <file>img/icon/file_2122.png</file>
+        <file>img/icon/home_8896.png</file>
+    </qresource>
+</RCC>

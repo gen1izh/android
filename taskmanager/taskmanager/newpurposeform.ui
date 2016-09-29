@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewPurposeForm</class>
+ <widget class="QWidget" name="NewPurposeForm">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>418</width>
+    <height>685</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"> QWidget {
+color: #333;
+border: 1px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="purposeLabel">
+     <property name="styleSheet">
+      <string notr="true"> QLabel {
+color: #333;
+border: 0px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+     </property>
+     <property name="text">
+      <string>Цель на месяц:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPlainTextEdit" name="purposeEdit"/>
+   </item>
+   <item>
+    <widget class="QPushButton" name="saveButton">
+     <property name="styleSheet">
+      <string notr="true"> QPushButton {
+color: #333;
+border: 1px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+}
+
+ QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
+}</string>
+     </property>
+     <property name="text">
+      <string>Сохранить</string>
+     </property>
+     <property name="icon">
+      <iconset resource="res.qrc">
+       <normaloff>:/img/img/icon/disc-floopy_1618.png</normaloff>:/img/img/icon/disc-floopy_1618.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>595</width>
+    <height>881</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+color: #333;
+border: 1px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="informationBox">
+      <property name="title">
+       <string>Информация</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="topMargin">
+        <number>40</number>
+       </property>
+       <item row="2" column="1">
+        <widget class="QLCDNumber" name="executedTasksNumber"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="todayTasksLabel">
+         <property name="styleSheet">
+          <string notr="true"> QLabel {
+color: #333;
+border: 0px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Задач на сегодня:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLCDNumber" name="todayTasksNumber"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="movedTasksLabel">
+         <property name="styleSheet">
+          <string notr="true"> QLabel {
+color: #333;
+border: 0px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Отложенных задач:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="executedTasksLabel">
+         <property name="styleSheet">
+          <string notr="true"> QLabel {
+color: #333;
+border: 0px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Выполнено задач:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="allTasksLabel">
+         <property name="styleSheet">
+          <string notr="true"> QLabel {
+color: #333;
+border: 0px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}</string>
+         </property>
+         <property name="text">
+          <string>Задач всего:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLCDNumber" name="movedTasksNumber"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLCDNumber" name="allTasksNumber">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QCalendarWidget" name="explorerTasksCalendarWidget"/>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="createReportButton">
+      <property name="styleSheet">
+       <string notr="true"> QPushButton {
+color: #333;
+border: 1px solid #555;
+font: 30pt &quot;Arial&quot;;
+border-radius: 0px;
+padding: 5px;
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+min-width: 80px;
+}
+
+QPushButton:hover {
+background: qradialgradient(cx: 0.3, cy: -0.4,
+fx: 0.3, fy: -0.4,
+radius: 1.35, stop: 0 #fff, stop: 1 #e8e8e8);
+}
+
+ QPushButton:pressed {
+background: qradialgradient(cx: 0.4, cy: -0.1,
+fx: 0.4, fy: -0.1,
+radius: 1.35, stop: 0 #fff, stop: 1 #88bbe8);
+}</string>
+      </property>
+      <property name="text">
+       <string>Сформировать отчет</string>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>595</width>
+     <height>64</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu">
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="tearOffEnabled">
+     <bool>false</bool>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/img/img/icon/configuration_7259.png</normaloff>:/img/img/icon/configuration_7259.png</iconset>
+    </property>
+    <addaction name="action_4"/>
+    <addaction name="separator"/>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
+    <addaction name="separator"/>
+    <addaction name="action_7"/>
+   </widget>
+   <addaction name="menu"/>
+  </widget>
+  <action name="action">
+   <property name="text">
+    <string>Добавить задачу</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Список задач</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Цель на месяц</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Написать рабочую метку</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>Настройки</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
