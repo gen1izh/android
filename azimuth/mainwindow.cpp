@@ -1,8 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include <QGeoPositionInfoSource>
-#include <QMessageBox>
+
+
+bool MainWindow::splashPlay() const
+{
+    return m_splashPlay;
+}
+void MainWindow::setSplashPlay(bool splashPlay)
+{
+    m_splashPlay = splashPlay;
+}
 
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
@@ -39,12 +47,20 @@ void MainWindow::positionUpdated(const QGeoPositionInfo &info) {
 void MainWindow::updateDistanceInfo()
 {
     QGeoCoordinate current;
-    current.setLatitude(m_model->getLatitudeByPointName(ui->pointsBox->currentText()));
-    current.setLongitude(m_model->getLongitudeByPointName(ui->pointsBox->currentText()));
+    double latitude = m_model->getLatitudeByPointName(ui->pointsBox->currentText());
+    double longitude = m_model->getLongitudeByPointName(ui->pointsBox->currentText());
+    current.setLatitude(latitude);
+    current.setLongitude(longitude);
 
     ui->lcdNumber->display(current.distanceTo(m_info.coordinate()));
 
     ui->angleNumber->display(current.azimuthTo(m_info.coordinate()));
+
+
+    QString  info = QString("Const lat %1 long %2 ; New lat %3 long %4").arg(latitude)
+            .arg(longitude).arg(m_info.coordinate().latitude()).arg(m_info.coordinate().longitude());
+
+    ui->infoEdit->setText(info);
 }
 
 void MainWindow::on_setPointButton_clicked()

@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGeoPositionInfoSource>
 #include <QGeoPositionInfo>
+#include <QMessageBox>
 #include <QTimer>
 
 #include "orm/models/pointsmodel.h"
@@ -19,6 +21,7 @@ class MainWindow : public QMainWindow
   QGeoPositionInfo   m_info;
   QTimer m_tick;
 
+  bool m_splashPlay;
 
    int iii= 0;
 
@@ -34,6 +37,8 @@ public slots:
 
     void updateDistanceInfo();
 
+    bool splashPlay() const;
+    void setSplashPlay(bool splashPlay);
 private slots:
     void on_setPointButton_clicked();
     void on_startButton_clicked();
