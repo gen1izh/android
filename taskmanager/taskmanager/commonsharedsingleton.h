@@ -2,6 +2,7 @@
 #define COMMON_SHARED_SINGLETON_H
 
 #include <QObject>
+#include <QScopedPointer>
 
 #include "addnewtaskform.h"
 #include "createreportform.h"
@@ -12,6 +13,10 @@
 #include "settingsform.h"
 #include "taskmanagerform.h"
 
+#include <orm/models/purposemodel.h>
+#include <orm/models/taskmodel.h>
+#include <orm/models/postmodel.h>
+
 class CommonSharedSingleton : public QObject
 {
     Q_OBJECT
@@ -20,9 +25,15 @@ class CommonSharedSingleton : public QObject
     CommonSharedSingleton(const CommonSharedSingleton &);
     CommonSharedSingleton &operator=(const CommonSharedSingleton &);
 
+    int m_id;
+
+    QScopedPointer<PurposeModel> m_purposeModel;
+    QScopedPointer<TaskModel> m_taskModel;
+    QScopedPointer<PostModel> m_postModel;
+
 public:
 
-    static const CommonSharedSingleton &instance(){
+    static CommonSharedSingleton &instance(){
         static CommonSharedSingleton theSingleton;
         return theSingleton;
     }
@@ -38,6 +49,15 @@ public:
 
     MainWindow *getMainWindow() const;
     void setMainWindow(MainWindow *value);
+
+
+    void setCurrentTaskId(int id);
+
+    PurposeModel * getPurposeModel() const;
+
+    TaskModel * getTaskModel() const;
+
+    PostModel * getPostModel() const;
 
 signals:
 

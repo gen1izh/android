@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QDate>
 
-#include "orm/models/purposemodel.h"
 
 namespace Ui {
 class NewPurposeForm;
@@ -13,8 +12,6 @@ class NewPurposeForm;
 class NewPurposeForm : public QWidget
 {
   Q_OBJECT
-
-    PurposeModel *m_purposeModel;
 
 public:
   explicit NewPurposeForm(QWidget *parent = 0);
