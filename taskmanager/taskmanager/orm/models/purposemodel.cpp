@@ -6,6 +6,7 @@
 #include "purposemodel.h"
 
 #include <QMessageBox>
+#include <QDate>
 
 PurposeModel::PurposeModel()
 {
@@ -24,19 +25,73 @@ PurposeModel::~PurposeModel()
     m_db.close();
 }
 
-QStringList PurposeModel::showAllPointsNames()
+QString PurposeModel::showPurposeOnCurrentMonth() {
+
+    QString purpose;
+
+    purpose.clear();
+
+    QDjangoQuerySet<Purpose> purps;
+
+    QList<QVariantMap> propertyMaps = purps.values(QStringList() << "monthYear" << "purpose");
+    foreach (const QVariantMap &propertyMap, propertyMaps) {
+        purpose = propertyMap["monthYear"].toString();
+
+        QStringList tmp = purpose.split(".");
+
+        // MM
+        if (tmp.at(0) == QDate::currentDate().toString("MM")) {
+            // yyyy
+            if (tmp.at(1) == QDate::currentDate().toString("yyyy")) {
+                return propertyMap["purpose"].toString();
+            }
+        }
+
+
+    }
+
+    return purpose;
+}
+
+void PurposeModel::setPurposeOnCurrentMonth(QString purpose)
 {
 
-    QStringList list;
+    QDjangoQuerySet<Purpose> somePurp;
 
-//    QDjangoQuerySet<PositionPoints> points;
+    bool isFind = false;
 
-//    QList<QVariantMap> propertyMaps = points.values(QStringList() << "name" << "longtitude" << "latitude");
-//    foreach (const QVariantMap &propertyMap, propertyMaps) {
-//        list.append(propertyMap["name"].toString());
-//    }
+    Purpose purp;
+    for (int i = 0; i < somePurp.size(); ++i) {
+        if (somePurp.at(i, &purp)) {
 
-    return list;
+            QStringList tmp = (purp.monthYear()).split(".");
+
+            // MM
+            if (tmp.at(0) == QDate::currentDate().toString("MM")) {
+                // yyyy
+                if (tmp.at(1) == QDate::currentDate().toString("yyyy")) {
+
+                    isFind = true;
+                    break;
+                }
+            }
+
+        }
+    }
+
+
+    if (isFind) {
+        purp.setMonthYear(QDate::currentDate().toString("MM.yyyy"));
+        purp.setPurpose(purpose);
+        purp.save();
+    }
+    else {
+        Purpose *purp = new Purpose;
+        purp->setMonthYear(QDate::currentDate().toString("MM.yyyy"));
+        purp->setPurpose(purpose);
+        purp->save();
+    }
+
 }
 
 

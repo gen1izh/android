@@ -43,7 +43,7 @@ min-width: 80px;
 }</string>
      </property>
      <property name="text">
-      <string>Цель на месяц:</string>
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Цель на месяц&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
    </item>

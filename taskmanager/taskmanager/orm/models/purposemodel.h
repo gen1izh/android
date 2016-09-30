@@ -7,14 +7,17 @@
 class PurposeModel
 {
 
-  QSqlDatabase m_db;
+    QSqlDatabase m_db;
 
 public:
-  PurposeModel();
-  ~PurposeModel();
+    PurposeModel();
+    ~PurposeModel();
 
-  QStringList showAllPointsNames();
+    QString showPurposeOnCurrentMonth();
+
+    void setPurposeOnCurrentMonth(QString purpose);
 
 };
+
 
 #endif // PURPOSE_MODEL_H
