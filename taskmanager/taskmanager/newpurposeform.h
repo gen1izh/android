@@ -20,6 +20,9 @@ public:
 private slots:
   void on_saveButton_clicked();
 
+public slots:
+  void openPurpose();
+
 private:
   Ui::NewPurposeForm *ui;
 };

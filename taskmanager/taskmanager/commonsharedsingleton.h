@@ -33,7 +33,7 @@ class CommonSharedSingleton : public QObject
 
 public:
 
-    static CommonSharedSingleton &instance(){
+    static CommonSharedSingleton &instance() {
         static CommonSharedSingleton theSingleton;
         return theSingleton;
     }

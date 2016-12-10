@@ -15,6 +15,11 @@ public:
 
   QStringList showAllPointsNames();
 
+  void addNewTask(const QString &name, const QString &description,
+                  const QString &date);
+
+  void editTask(int id, const QString &name, const QString &description,
+                const QString &date, const QString &status, const QString &results);
 
 };
 

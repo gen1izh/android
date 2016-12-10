@@ -39,4 +39,14 @@ QStringList TaskModel::showAllPointsNames()
     return list;
 }
 
+void TaskModel::addNewTask(const QString &name, const QString &description, const QString &date)
+{
+
+}
+
+void TaskModel::editTask(int id, const QString &name, const QString &description, const QString &date, const QString &status, const QString &results)
+{
+
+}
+
 

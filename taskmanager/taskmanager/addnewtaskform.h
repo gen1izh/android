@@ -15,6 +15,13 @@ public:
   explicit AddNewTaskForm(QWidget *parent = 0);
   ~AddNewTaskForm();
 
+private slots:
+    void on_chooseDateButton_clicked();
+
+    void on_calendarWidget_clicked(const QDate &date);
+
+    void on_saveButton_clicked();
+
 private:
   Ui::AddNewTaskForm *ui;
 };
